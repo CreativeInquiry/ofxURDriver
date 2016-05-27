@@ -1,7 +1,7 @@
 
 #ofxURDriver
 
-######An openFrameworks addon for controlling and interacting with Universal Robots robotic arms.  Use this with ofxRobotArm
+######An openFrameworks addon for controlling and interacting with Universal Robots robotic arms.  Use this with [ofxRobotArm](http://github.com/danzeeeman/ofxRobotArm)
 
   - [About](#about)
   - [Overview](#overview)
