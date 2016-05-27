@@ -1,7 +1,0 @@
-ofxAssimpModelLoader
-ofxGML
-ofxGizmo
-ofxGui
-ofxPtf
-ofxTiming
-ofxXmlSettings
