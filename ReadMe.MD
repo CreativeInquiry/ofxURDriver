@@ -53,15 +53,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **The Frank-Ratchye STUDIO for Creative Inquiry** | [studioforcreativeinquiry.org](http://studioforcreativeinquiry.org) | [@creativeinquiry](https://github.com/CreativeInquiry)
 
 
-##Additional Resources
-Here are some of the references and resources that have made `ofxRobotArm` possible:
-
-- [ur_modern_driver](https://github.com/ThomasTimm/ur_modern_driver)
-- [Script Manual](https://s3-eu-west-1.amazonaws.com/ur-support-site/18679/scriptmanual_en.pdf)
-- [UR Kinematics](https://smartech.gatech.edu/bitstream/handle/1853/50782/ur_kin_tech_report_1.pdf)
-- [UR Report](http://orbit.dtu.dk/files/117833332/Universal_Robot_report.pdf)
-
-
  
 
 
