@@ -10,6 +10,8 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "Synchronized.h"
+#include "ofxBullet.h"
+
 struct Joint{
     ofVec3f offset;
     ofVec3f axis;
@@ -51,4 +53,14 @@ public:
     ofParameter<float> stage;
     ofParameter<bool> bDrawModel;
     ofParameter<bool> bDrawTargetModel;
+    
+    
+    
+    ofxBulletWorldRigid			world;
+    vector <ofxBulletBox*>		bounds;
+    ofxBulletCustomShape*		boundsShape;
+    
+    vector<ofxBulletCustomShape*>	phyMesh;
+    vector<ofxBulletJoint*>		phyJoints;
+    
 };

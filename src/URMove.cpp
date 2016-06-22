@@ -14,15 +14,12 @@ URMove::~URMove(){
     
 }
 void URMove::setup(){
+    float min = FLT_MIN;
+    float max = FLT_MAX;
     movementParams.setName("UR Movements");
-
-    movementParams.add(minSpeed.set("MIN Speed", 0.0, 0.0, TWO_PI*10));
-    movementParams.add(maxSpeed.set(" MAX Speed", 0.0, 0.0, TWO_PI*10));
-
-    
+    movementParams.add(minSpeed.set("MIN Speed", max, min, max));
+    movementParams.add(maxSpeed.set("MAX Speed", min, min, max));
     movementParams.add(targetTCPLerpSpeed.set("TCP LerpSpeed", 0.9, 0.001, 1.0));
-
-    
     movementParams.add(avgAcceleration.set("Accel", 100, 0, 200));
     movementParams.add(jointAccelerationMultipler.set("Accel Multi", 1, 1, 1000));
     movementParams.add(speedDivider.set("Speed Divider", 1, 1, 10));
@@ -37,7 +34,7 @@ void URMove::setup(){
     }
     
     selectedSolution = -1;
-    deltaTimer.setSmoothing(true);
+    deltaTimer.setSmoothing(false);
     distance = 0;
     acceleration.assign(6, 0.0);
     lastJointSpeeds.assign(6, 0.0);
@@ -47,7 +44,6 @@ void URMove::setup(){
     
     epslion = 0.00025;
     targetLength = 0.0;
-    
 }
 
 
@@ -237,27 +233,23 @@ void URMove::urKinematics(ofMatrix4x4 input){
                         inversePosition.getBack()[i][j]  = ofMap(inversePosition.getBack()[i][j], PI, TWO_PI, -PI, 0, true);
                     }
                 }
-//
-//                if(j == 5){
-//                     inversePosition.getBack()[i][j]  = ofMap(inversePosition.getBack()[i][j], 0, TWO_PI, -TWO_PI, 0, true);
-//                }
                 
                 previews[i]->jointsRaw.getBack()[j] = inversePosition.getBack()[i][j];
                 if(preInversePosition.size() > 0){
                     if(i == selectedSolution){
                         if(preInversePosition[i][j]-inversePosition.getBack()[i][j] > PI){
-                            ofLog()<<"JOINT WRAPS SOL "<<ofToString(i)<<" Joint "<<ofToString(j)<<endl;
+                            ofLog(OF_LOG_WARNING)<<"JOINT WRAPS SOL "<<ofToString(i)<<" Joint "<<ofToString(j)<<endl;
                         }
                     }
                 }
                 
                 previews[i]->jointsProcessed.getBack()[j] = ofRadToDeg(previews[i]->jointsRaw.getBack()[j]);
                 if(j == 1 || j == 3){
+                    //correct for -90 zero position in render
                     previews[i]->jointsProcessed.getBack()[j]+=90;
                 }
                 
                 previews[i]->joints[j].rotation.makeRotate(previews[i]->jointsProcessed.getBack()[j], previews[i]->joints[j].axis);
-                
                 previews[i]->nodes[j].setOrientation(previews[i]->joints[j].rotation);
             }
             previews[i]->jointsRaw.swapBack();
