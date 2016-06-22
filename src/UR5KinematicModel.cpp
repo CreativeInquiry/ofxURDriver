@@ -138,7 +138,7 @@ void UR5KinematicModel::setToolMesh(ofMesh mesh){
 }
 void UR5KinematicModel::update(){
 
-    	world.update();
+//    	world.update();
 }
 void UR5KinematicModel::draw(float stage){
     
