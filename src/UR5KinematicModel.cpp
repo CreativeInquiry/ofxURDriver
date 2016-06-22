@@ -16,9 +16,9 @@ UR5KinematicModel::~UR5KinematicModel(){
 void UR5KinematicModel::setup(){
     
     
-    world.setup();
-    world.disableGrabbing();
-    world.setGravity( ofVec3f(0, 0, 0) );
+//    world.setup();
+//    world.disableGrabbing();
+//    world.setGravity( ofVec3f(0, 0, 0) );
 
     
     ofDirectory dir;
@@ -90,17 +90,17 @@ void UR5KinematicModel::setup(){
         nodes[i].setOrientation(joints[i].rotation);
     }
     
-    phyMesh.resize( nodes.size() );
-    for (int i = 0; i < phyMesh.size(); i++) {
-        phyMesh[i] = new ofxBulletCustomShape();
-        phyMesh[i]->addMesh(meshs[i], ofVec3f(100, 100, 100), true);
-        phyMesh[i]->setFriction(0.0);
-        phyMesh[i]->setRestitution(0.01);
-        phyMesh[i]->enableKinematic();
-        phyMesh[i]->create( world.world, joints[i].position*1000, joints[i].rotation, 1.);
-        phyMesh[i]->add();
-
-    }
+//    phyMesh.resize( nodes.size() );
+//    for (int i = 0; i < phyMesh.size(); i++) {
+//        phyMesh[i] = new ofxBulletCustomShape();
+//        phyMesh[i]->addMesh(meshs[i], ofVec3f(100, 100, 100), true);
+//        phyMesh[i]->setFriction(0.0);
+//        phyMesh[i]->setRestitution(0.01);
+//        phyMesh[i]->enableKinematic();
+//        phyMesh[i]->create( world.world, joints[i].position*1000, joints[i].rotation, 1.);
+//        phyMesh[i]->add();
+//
+//    }
     
     
     tcpNode.setParent(nodes[5]);
