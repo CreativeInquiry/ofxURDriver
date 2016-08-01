@@ -16,17 +16,23 @@
  * limitations under the License.
  */
 
-#ifndef ROBOT_STATE_H_
-#define ROBOT_STATE_H_
-
+#pragma once
+#include "ofMain.h"
 #include <inttypes.h>
 #include <vector>
 #include <stdlib.h>
 #include <string.h>
 #include <mutex>
 #include <condition_variable>
+#if defined(TARGET_WIN32)
+#include <winsock2.h>
+#include "portable_endian.h"
+#endif
+#if defined(TARGET_OSX)
 #include <netinet/in.h>
 #include "endian.h"
+#endif
+
 
 namespace message_types {
 enum message_type {
@@ -216,4 +222,4 @@ public:
 	void unpackRobotMode(uint8_t * buf, unsigned int offset);
 };
 
-#endif /* ROBOT_STATE_H_ */
+

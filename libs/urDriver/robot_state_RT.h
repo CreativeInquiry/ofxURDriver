@@ -16,17 +16,23 @@
  * limitations under the License.
  */
 
-#ifndef ROBOT_STATE_RT_H_
-#define ROBOT_STATE_RT_H_
+#pragma once
 #include "ofLog.h"
 #include <inttypes.h>
 #include <vector>
 #include <stdlib.h>
 #include <string.h>
 #include <mutex>
+#if defined(TARGET_WIN32)
+#include <winsock2.h>
+#include "portable_endian.h"
+#endif
+#if defined(TARGET_OSX)
 #include <netinet/in.h>
-#include <condition_variable>
 #include "endian.h"
+#endif
+#include <condition_variable>
+
 
 class RobotStateRT {
 private:
@@ -114,4 +120,3 @@ public:
 	void unpack(uint8_t * buf);
 };
 
-#endif /* ROBOT_STATE_RT_H_ */

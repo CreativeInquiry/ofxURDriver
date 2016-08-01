@@ -1,15 +1,11 @@
-#ifndef __FINK_ENDIANDEV_PKG_ENDIAN_H__
-#define __FINK_ENDIANDEV_PKG_ENDIAN_H__ 1
+#pragma once
+#if defined(TARGET_OSX)
 
 /** compatibility header for endian.h
  * This is a simple compatibility shim to convert
  * BSD/Linux endian macros to the Mac OS X equivalents.
  * It is public domain.
  * */
-
-#ifndef __APPLE__
-	#warning "This header file (endian.h) is MacOS X specific.\n"
-#endif	/* __APPLE__ */
 
 
 #include <libkern/OSByteOrder.h>

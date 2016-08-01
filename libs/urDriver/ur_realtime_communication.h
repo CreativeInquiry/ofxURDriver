@@ -25,18 +25,25 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <sys/time.h>
 #include <thread>
 #include <mutex>
 #include <condition_variable>
 #include <sys/types.h>
+#if !defined(TARGET_WIN32)
+#include <sys/time.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
 #include <netdb.h>
-#include <iostream>
 #include <unistd.h>
 #include <arpa/inet.h>
+#else
+#include <time.h>
+#include <winsock2.h>
+#define bzero(memArea, len)  memset((memArea), 0, (len))
+#define bcopy(memSrc, memDst, memLen) \ memcpy((memDst), (memSrc), (memLen))
+#endif
+#include <iostream>
 #include <errno.h>
 #include <fcntl.h>
 #include <sys/types.h>
