@@ -2,6 +2,8 @@
 #include "ofMain.h"
 #include "ur_kin.h"
 #include "UR5KinematicModel.h"
+// Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry All rights reserved.
+//
 class URIKFast{
 public:
     URIKFast();
