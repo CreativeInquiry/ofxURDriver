@@ -115,16 +115,18 @@ void UR5KinematicModel::update(){
     
     //    	world.update();
 }
-void UR5KinematicModel::draw(){
+void UR5KinematicModel::draw(bool bDrawDebug){
     
-    ofPushStyle(); {
-        ofDrawAxis(1000);
-        ofEnableDepthTest();
-        ofSetColor(255, 255, 0);
-        ofDrawSphere(tool.position*ofVec3f(1000, 1000, 1000), 4);
-        ofSetColor(225, 225, 225);
-        ofDisableDepthTest();
-    } ofPopStyle();
+    if(bDrawDebug) {
+        ofPushStyle(); {
+            ofDrawAxis(1000);
+            ofEnableDepthTest();
+            ofSetColor(255, 255, 0);
+            ofDrawSphere(tool.position*ofVec3f(1000, 1000, 1000), 4);
+            ofSetColor(225, 225, 225);
+            ofDisableDepthTest();
+        } ofPopStyle();
+    }
     
     if(bDrawModel){
         ofEnableDepthTest();
@@ -147,7 +149,10 @@ void UR5KinematicModel::draw(){
                     q.getRotate(x, axis);
                     ofTranslate(joints[i].offset*1000);
                     gmat.translate( joints[i].offset*1000 );
-                    ofDrawAxis(10);
+                    
+                    if(bDrawDebug) {
+                        ofDrawAxis(10);
+                    }
                     ofMatrix4x4 tmat;
                     if(i >= 3){
                         ofPushMatrix();
@@ -177,24 +182,16 @@ void UR5KinematicModel::draw(){
         ofPopMatrix();
         ofDisableDepthTest();
         
-        ofPushMatrix();
-        {
-            //            ofRotate(180, 0, 0, 1);
-            for(int i = 0; i < nodes.size(); i++){
-                nodes[i].draw();
+        if (bDrawDebug) {
+            ofPushMatrix();
+            {
+                //            ofRotate(180, 0, 0, 1);
+                for(int i = 0; i < nodes.size(); i++){
+                    nodes[i].draw();
+                }
+                tcpNode.draw();
             }
-            tcpNode.draw();
+            ofPopMatrix();
         }
-        ofPopMatrix();
     }
 }
-
-
-
-
-
-
-
-
-
-
