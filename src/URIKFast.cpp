@@ -12,10 +12,10 @@ URIKFast::~URIKFast(){
 /// \return row-major array in UR World Cords
 double* toUR(ofMatrix4x4 input){
     double* T = new double[16];
-    cout<<"toUR ==================="<<endl;
-    
-    cout<<"ofMatrix ==================="<<endl;
-    cout<<input<<endl;
+//    cout<<"toUR ==================="<<endl;
+//    
+//    cout<<"ofMatrix ==================="<<endl;
+//    cout<<input<<endl;
     
     for(int i = 0; i < 4; i++){
         T[i] = (double)input._mat[i][0];
@@ -27,15 +27,15 @@ double* toUR(ofMatrix4x4 input){
     
     
     
-    for(int i=0;i<4;i++) {
-        for(int j=i*4;j<(i+1)*4;j++)
-            printf("%1.3f ", T[j]);
-        printf("\n");
-    }
+//    for(int i=0;i<4;i++) {
+//        for(int j=i*4;j<(i+1)*4;j++)
+//            printf("%1.3f ", T[j]);
+//        printf("\n");
+//    }
     
     
     
-    cout<<"end toUR ==================="<<endl;
+//    cout<<"end toUR ==================="<<endl;
     return T;
 }
 
