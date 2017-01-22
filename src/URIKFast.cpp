@@ -1,5 +1,6 @@
 #include "URIKFast.h"
-
+// Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry All rights reserved.
+//
 URIKFast::URIKFast(){
     
 }
@@ -13,7 +14,6 @@ URIKFast::~URIKFast(){
 double* toUR(ofMatrix4x4 input){
     double* T = new double[16];
 //    cout<<"toUR ==================="<<endl;
-//    
 //    cout<<"ofMatrix ==================="<<endl;
 //    cout<<input<<endl;
     

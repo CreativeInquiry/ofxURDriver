@@ -105,6 +105,7 @@ void UR5KinematicModel::setPose(vector<double> pose){
         }else{
             joints[i].rotation.makeRotate(ofRadToDeg(pose[i]),joints[i].axis);
         }
+         nodes[i].setOrientation(joints[i].rotation);
     }
     
 }
@@ -112,8 +113,7 @@ void UR5KinematicModel::setToolMesh(ofMesh mesh){
     toolMesh = mesh;
 }
 void UR5KinematicModel::update(){
-    
-    //    	world.update();
+
 }
 void UR5KinematicModel::draw(bool bDrawDebug){
     
