@@ -120,16 +120,13 @@ void UR5KinematicModel::draw(bool bDrawDebug){
     if(bDrawDebug) {
         ofPushStyle(); {
             ofDrawAxis(1000);
-            ofEnableDepthTest();
             ofSetColor(255, 255, 0);
             ofDrawSphere(tool.position*ofVec3f(1000, 1000, 1000), 4);
             ofSetColor(225, 225, 225);
-            ofDisableDepthTest();
         } ofPopStyle();
     }
     
     if(bDrawModel){
-        ofEnableDepthTest();
         ofQuaternion q;
         ofVec3f offset;
         
@@ -180,7 +177,6 @@ void UR5KinematicModel::draw(bool bDrawDebug){
             ofPopMatrix();
         }
         ofPopMatrix();
-        ofDisableDepthTest();
         
         if (bDrawDebug) {
             ofPushMatrix();
