@@ -3,7 +3,7 @@
 //  urModernDriverTest
 //
 //  Created by dantheman on 2/20/16.
-// Copyright (c) 2016, Daniel Moore, Madaline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry All rights reserved.
+// Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry All rights reserved.
 //
 
 #include "URDriver.h"
@@ -244,7 +244,7 @@ ofQuaternion ofxURDriver::convertAxisAngle(double rx, double ry, double rz) {
 
 vector <double> ofxURDriver::getAchievablePosition(vector <double> position){
     
-    float maxAccelDeg = 80.0;
+    float maxAccelDeg = 500.0;
     float maxSpeedPct = 1.0;
     
     if( !bMove && deccelCount > 0 ){
@@ -390,7 +390,7 @@ void ofxURDriver::threadedFunction(){
                 //if we aren't moving but deccelCount isn't 0 lets deccelerate 
                 if( (bMove && currentPosition.size()>0)|| (currentPosition.size()>0 && deccelCount>0) ){
                     timeNow = ofGetElapsedTimef();
-                    if( bMove || timeNow-lastTimeSentMove >= 1.0/60.0 ){
+                    if( bMove || timeNow-lastTimeSentMove >= 1.0/125.0 ){
                         currentPosition = getAchievablePosition(currentPosition);
                         robot->setPosition(currentPosition[0], currentPosition[1], currentPosition[2], currentPosition[3], currentPosition[4], currentPosition[5]);
                         if(!bMove){
