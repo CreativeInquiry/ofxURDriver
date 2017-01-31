@@ -22,7 +22,7 @@ ofxURDriver::ofxURDriver(){
     jointsRaw.getBack().assign(6, 0.0);
     jointsProcessed.getBack().assign(6, 0.0);
     toolPointRaw.getBack().assign(6, 0.0);
-    numDeccelSteps = 30;
+    numDeccelSteps = 120;
 
 }
 
@@ -390,7 +390,7 @@ void ofxURDriver::threadedFunction(){
                 //if we aren't moving but deccelCount isn't 0 lets deccelerate 
                 if( (bMove && currentPosition.size()>0)|| (currentPosition.size()>0 && deccelCount>0) ){
                     timeNow = ofGetElapsedTimef();
-                    if( bMove || timeNow-lastTimeSentMove >= timer.getPeriod() ){
+                    if( bMove || timeNow-lastTimeSentMove >= 1.0/60.0 ){
                         targetPose = getAchievablePosition(currentPosition);
                         robot->setPosition(targetPose[0], targetPose[1], targetPose[2], targetPose[3], targetPose[4], targetPose[5]);
                         if(!bMove){
