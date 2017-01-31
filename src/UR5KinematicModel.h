@@ -24,7 +24,7 @@ public:
     ~UR5KinematicModel();
     void setup();
     void update();
-    void draw();
+    void draw(bool bDrawDebug=true);
     void setToolMesh(ofMesh mesh);
     void setPose(vector<double> pose);
     ofNode getTool();

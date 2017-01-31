@@ -59,6 +59,7 @@ public:
     std::thread* ros_control_thread_;
     vector<double> currentSpeed;
     vector<double> currentPosition;
+    vector<double> targetPose;
     vector<double> calculatedSpeed;
     vector<double> currentRobotPositionRadians;
 

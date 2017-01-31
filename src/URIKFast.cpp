@@ -14,7 +14,6 @@ URIKFast::~URIKFast(){
 double* toUR(ofMatrix4x4 input){
     double* T = new double[16];
 //    cout<<"toUR ==================="<<endl;
-    
 //    cout<<"ofMatrix ==================="<<endl;
 //    cout<<input<<endl;
     
