@@ -11,7 +11,7 @@
 ##Licensing
 `ofxURDriver` is licensed for **NON-COMMERCIAL USE ONLY**. 
 
-Copyright (c) 2016, Daniel Moore, Madaline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry
+Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
