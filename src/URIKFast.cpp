@@ -8,6 +8,30 @@ URIKFast::~URIKFast(){
     
 }
 
+//void to_mat44(double * mat4_4, const IkReal* eetrans, const IkReal* eerot)
+//{
+//    for(int i=0; i< 3;++i){
+//        mat4_4[i*4+0] = eerot[i*3+0];
+//        mat4_4[i*4+1] = eerot[i*3+1];
+//        mat4_4[i*4+2] = eerot[i*3+2];
+//        mat4_4[i*4+3] = eetrans[i];
+//    }
+//    mat4_4[3*4+0] = 0;
+//    mat4_4[3*4+1] = 0;
+//    mat4_4[3*4+2] = 0;
+//    mat4_4[3*4+3] = 1;
+//}
+//
+//void from_mat44(const double * mat4_4, IkReal* eetrans, IkReal* eerot)
+//{
+//    for(int i=0; i< 3;++i){
+//        eerot[i*3+0] = mat4_4[i*4+0];
+//        eerot[i*3+1] = mat4_4[i*4+1];
+//        eerot[i*3+2] = mat4_4[i*4+2];
+//        eetrans[i] = mat4_4[i*4+3];
+//    }
+//}
+
 /// \brief Converts a 4x4 matrix to a 1D array
 /// \param input ofMatrix4x4 to convert
 /// \return row-major array in UR World Cords
@@ -16,7 +40,6 @@ double* toUR(ofMatrix4x4 input){
 //    cout<<"toUR ==================="<<endl;
 //    cout<<"ofMatrix ==================="<<endl;
 //    cout<<input<<endl;
-    
     for(int i = 0; i < 4; i++){
         T[i] = (double)input._mat[i][0];
         T[i+(4)] = (double)input._mat[i][1];
