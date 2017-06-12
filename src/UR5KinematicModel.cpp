@@ -21,9 +21,12 @@ UR5KinematicModel::~UR5KinematicModel(){
 void UR5KinematicModel::setup(){
     
     
-    loader.loadModel(ofToDataPath("models/ur5.dae"));
-    for(int i = 0; i < loader.getNumMeshes(); i++){
-        meshs.push_back(loader.getMesh(i));
+    if(loader.loadModel(ofToDataPath("models/ur5.dae"))){
+        for(int i = 0; i < loader.getNumMeshes(); i++){
+            meshs.push_back(loader.getMesh(i));
+        }
+    }else{
+        ofLogFatalError()<<"PLEASE PLACE THE 3D FILES OF THE UR ARM IN data/models/ur5.dae"<<endl;
     }
     
     joints.resize(6);
@@ -91,6 +94,8 @@ ofQuaternion UR5KinematicModel::getToolPointQuaternion(){
     return nodes[5].getGlobalTransformMatrix().getRotate();
 }
 
+
+
 ofNode UR5KinematicModel::getTool(){
     return tcpNode;
 }
@@ -98,6 +103,18 @@ ofNode UR5KinematicModel::getTool(){
 void UR5KinematicModel::setToolOffset(ofVec3f localOffset){
     tcpNode.setPosition(localOffset);
 }
+
+void UR5KinematicModel::setAngles( vector<double> aTargetRadians ){
+    for(int i = 0; i < aTargetRadians.size(); i++){
+        if(i == 1 || i == 3){
+            joints[i].rotation.makeRotate(ofRadToDeg(aTargetRadians[i])+90,joints[i].axis);
+        }else{
+            joints[i].rotation.makeRotate(ofRadToDeg(aTargetRadians[i]),joints[i].axis);
+        }
+        nodes[i].setOrientation(joints[i].rotation);
+    }
+}
+
 void UR5KinematicModel::setPose(vector<double> pose){
     for(int i = 0; i < pose.size(); i++){
         if(i == 1 || i == 3){
@@ -116,7 +133,9 @@ void UR5KinematicModel::update(){
 
 }
 void UR5KinematicModel::draw(bool bDrawDebug){
-    
+    ofPushMatrix();
+    ofPushStyle();
+    ofSetColor(255, 255, 255);
     if(bDrawDebug) {
         ofPushStyle(); {
             ofDrawAxis(1000);
@@ -190,4 +209,7 @@ void UR5KinematicModel::draw(bool bDrawDebug){
             ofPopMatrix();
         }
     }
+    
+    ofPopStyle();
+    ofPopMatrix();
 }

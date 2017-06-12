@@ -83,14 +83,14 @@ void URMove::computeVelocities(){
         minSpeed = FLT_MAX;
         maxSpeed = FLT_MIN;
         for( int i = 0; i < currentPose.size(); i++ ) {
-            currentJointVelocity[i] =  ofAngleDifferenceRadians( currentPose[i], targetPose[i] )/deltaTime/speedDivider;
+            currentJointVelocity[i] =  ofAngleDifferenceRadians( currentPose[i], targetPose[i] )/deltaTime;
             
             currentJointVelocity[i] = ofClamp(currentJointVelocity[i], -PI/2, PI/2);
             minSpeed = MIN(minSpeed.get(), currentJointVelocity[i]);
             maxSpeed = MAX(maxSpeed.get(), currentJointVelocity[i]);
             
             
-            jointAccelerations[i] = (currentJointVelocity[i] - previousJointVelocity[i])/deltaTime/speedDivider;
+            jointAccelerations[i] = (currentJointVelocity[i] - previousJointVelocity[i])/deltaTime;
             if(fabs(jointAccelerations[i]) > fabs(avgAccel)){
                 avgAccel =jointAccelerations[i];
             }

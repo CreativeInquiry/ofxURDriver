@@ -22,15 +22,14 @@ ofxURDriver::ofxURDriver(){
     jointsRaw.getBack().assign(6, 0.0);
     jointsProcessed.getBack().assign(6, 0.0);
     toolPointRaw.getBack().assign(6, 0.0);
-    numDeccelSteps = 30;
+    numDeccelSteps = 120;
 
 }
 
 ofxURDriver::~ofxURDriver(){
-    if( bStarted ) {
-        stopThread();
-        
-    }
+//    if( bStarted ) {
+//        stopThread();
+//    }
 }
 
 void ofxURDriver::setAllowReconnect(bool bDoReconnect){
@@ -264,7 +263,7 @@ vector <double> ofxURDriver::getAchievablePosition(vector <double> position){
     maxSpeedPct *= acceleratePct;
     
     //this seeems to do much better with a hardcoded timedelta
-    float timeDiff = 1.0/125.0;//timeNow-lastTimeSentMove;
+    float timeDiff = 1.0/120.0;//timeNow-lastTimeSentMove;
 
     if( currentRobotPositionRadians.size() && position.size() ){
         
@@ -390,9 +389,9 @@ void ofxURDriver::threadedFunction(){
                 //if we aren't moving but deccelCount isn't 0 lets deccelerate 
                 if( (bMove && currentPosition.size()>0)|| (currentPosition.size()>0 && deccelCount>0) ){
                     timeNow = ofGetElapsedTimef();
-                    if( bMove || timeNow-lastTimeSentMove >= timer.getPeriod() ){
-                        targetPose = getAchievablePosition(currentPosition);
-                        robot->setPosition(targetPose[0], targetPose[1], targetPose[2], targetPose[3], targetPose[4], targetPose[5]);
+                    if( bMove || timeNow-lastTimeSentMove >= 1.0/60.0){
+                        currentPosition = getAchievablePosition(currentPosition);
+                        robot->setPosition(currentPosition[0], currentPosition[1], currentPosition[2], currentPosition[3], currentPosition[4], currentPosition[5]);
                         if(!bMove){
                             deccelCount--;
                             if( deccelCount < 0){

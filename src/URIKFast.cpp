@@ -76,7 +76,7 @@ int URIKFast::selectSolution(vector<vector<double> > & inversePosition)
             }
             if(preInversePosition.size() > 0){
                 if(i == selectedSolution){
-                    if(preInversePosition[i][j]-inversePosition[i][j] > PI){
+                    if(preInversePosition[i][j]-inversePosition[i][j] > 2*PI){
                         ofLog(OF_LOG_WARNING)<<"JOINT WRAPS SOL "<<ofToString(i)<<" Joint "<<ofToString(j)<<endl;
                     }
                 }
@@ -122,8 +122,10 @@ vector<vector<double> > URIKFast::inverseKinematics(vector<double> input)
 }
 vector<vector<double> > URIKFast::inverseKinematics(Joint pose){
     ofMatrix4x4 matPose;
-    matPose.setTranslation(pose.position);
-    matPose.setRotate(pose.rotation);
+    ofMatrix4x4 matT, matR;
+    matT.makeTranslationMatrix(pose.position);
+    matR.makeRotationMatrix(pose.rotation);
+    matPose = matR*matT;
     return inverseKinematics(matPose);
     
 }

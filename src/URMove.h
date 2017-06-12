@@ -19,7 +19,6 @@ public:
     ~URMove();
     void setup();
     void update();
-    void draw(int i);
     void computeVelocities();
     void updatePathDebug();
     

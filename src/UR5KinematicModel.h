@@ -27,6 +27,9 @@ public:
     void draw(bool bDrawDebug=true);
     void setToolMesh(ofMesh mesh);
     void setPose(vector<double> pose);
+    
+    void getArmIK( ofVec3f aTargetWorldPos, ofVec3f aElbowWorldPos, bool aBInvertElbow, float aDeltaTimef );
+    
     ofNode getTool();
     void setToolOffset(ofVec3f localOffset);
     ofQuaternion getToolPointQuaternion();
