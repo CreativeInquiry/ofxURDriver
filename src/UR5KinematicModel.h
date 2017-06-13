@@ -10,13 +10,9 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "Synchronized.h"
+#include "URJoint.h"
 
-struct Joint{
-    ofVec3f offset;
-    ofVec3f axis;
-    ofVec3f position;
-    ofQuaternion rotation;
-};
+
 //#include "ofxBullet.h"
 class UR5KinematicModel{
 public:
@@ -56,7 +52,7 @@ public:
     ofParameter<float> stage;
     ofParameter<bool> bDrawModel;
     ofParameter<bool> bDrawTargetModel;
-    
+    ofParameter<bool> bUseShader;
     
     
 //    ofxBulletWorldRigid			world;

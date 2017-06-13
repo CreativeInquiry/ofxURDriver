@@ -10,7 +10,7 @@ public:
     URIKFast();
     ~URIKFast();
     
-    int selectSolution(vector<vector<double> > & inversePosition);
+    int selectSolution(vector<vector<double> > & inversePosition, vector<double> currentQ, vector<double> weight);
     ofMatrix4x4 forwardKinematics(vector<double> pose);
     double* forwardKinematics(double o, double t, double th, double f, double fi, double s);
     vector<vector<double> > inverseKinematics(Joint pose);
@@ -19,7 +19,7 @@ public:
     vector<vector<double> >  inverseKinematics(double o, double t, double th, double f, double fi, double s);
     
     
-    
+    vector<double> currentPosition;
     URKinematics kinematics;
     vector<vector<double> > preInversePosition;
 };

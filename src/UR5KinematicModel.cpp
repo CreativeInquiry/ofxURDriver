@@ -87,7 +87,7 @@ void UR5KinematicModel::setup(){
     
     bDrawModel.set("Draw Model", true);
     bDrawTargetModel.set("Draw Target Model", false);
-    bDrawModel = true;
+    bUseShader.set("Use Shader", true);
 }
 
 ofQuaternion UR5KinematicModel::getToolPointQuaternion(){
@@ -153,6 +153,9 @@ void UR5KinematicModel::draw(bool bDrawDebug){
         gmat.makeIdentityMatrix();
         gmat.makeScaleMatrix( 1, 1, 1 );
         
+        if(bUseShader){
+            shader.begin();
+        }
         ofPushMatrix();
         {
             ofPushMatrix();
@@ -196,6 +199,8 @@ void UR5KinematicModel::draw(bool bDrawDebug){
             ofPopMatrix();
         }
         ofPopMatrix();
+        
+        if(bUseShader) shader.end();
         
         if (bDrawDebug) {
             ofPushMatrix();

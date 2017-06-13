@@ -23,3 +23,4 @@ ofVec3f toMeters(ofVec3f v){
 ofVec3f toMM(ofVec3f v){
     return ofVec3f(v*ofVec3f(1000, 1000, 1000));
 }
+

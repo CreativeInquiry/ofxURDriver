@@ -10,13 +10,7 @@
 #include "ofMain.h"
 #include "ofxAssimpModelLoader.h"
 #include "Synchronized.h"
-
-struct Joint{
-    ofVec3f offset;
-    ofVec3f axis;
-    ofVec3f position;
-    ofQuaternion rotation;
-};
+#include "URJoint.h"
 //#include "ofxBullet.h"
 class UR10KinematicModel{
 public:
