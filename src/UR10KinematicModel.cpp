@@ -21,12 +21,13 @@ UR10KinematicModel::~UR10KinematicModel(){
 void UR10KinematicModel::setup(){
     
     
-    if(loader.loadModel(ofToDataPath("models/ur10.dae"))){
+    if(loader.loadModel(ofToDataPath("models/ur5.dae"))){
         for(int i = 0; i < loader.getNumMeshes(); i++){
+            cout<<i<<endl;
             meshs.push_back(loader.getMesh(i));
         }
     }else{
-        ofLogFatalError()<<"PLEASE PLACE THE 3D FILES OF THE UR ARM IN data/models/ur5.dae"<<endl;
+        ofLogFatalError()<<"PLEASE PLACE THE 3D FILES OF THE UR ARM IN data/models/ur10.dae"<<endl;
     }
     
     joints.resize(6);
