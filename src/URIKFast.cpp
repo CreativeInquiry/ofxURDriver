@@ -211,6 +211,7 @@ vector<vector<double> > URIKFast::inverseKinematics(vector<double> input)
     }
     return vector<vector<double>>();
 }
+
 vector<vector<double> > URIKFast::inverseKinematics(Joint pose){
     ofMatrix4x4 matPose;
     ofMatrix4x4 matT, matR;
@@ -220,6 +221,7 @@ vector<vector<double> > URIKFast::inverseKinematics(Joint pose){
     return inverseKinematics(matPose);
     
 }
+
 vector<vector<double> > URIKFast::inverseKinematics(ofMatrix4x4 pose)
 {
     double q_sols[8*6];

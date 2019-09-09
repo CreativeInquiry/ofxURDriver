@@ -27,9 +27,7 @@ ofxURDriver::ofxURDriver(){
 }
 
 ofxURDriver::~ofxURDriver(){
-//    if( bStarted ) {
-//        stopThread();
-//    }
+    stopThread();
 }
 
 void ofxURDriver::setAllowReconnect(bool bDoReconnect){

@@ -92,7 +92,7 @@ void UR10KinematicModel::setup(){
 }
 
 ofQuaternion UR10KinematicModel::getToolPointQuaternion(){
-    return nodes[5].getGlobalTransformMatrix().getRotate();
+    return toOf(nodes[5].getGlobalTransformMatrix()).getRotate();
 }
 
 

@@ -38,7 +38,7 @@ void UR5KinematicModel::setup(){
     
     joints[0].position.set(0, 0, 0);
     joints[1].position.set(0, -0.072238, 0.083204);
-    joints[2].position.set(0,-0.077537,0.51141);
+    joints[2].position.set(0, -0.077537,0.51141);
     joints[3].position.set(0, -0.070608, 0.903192);
     joints[4].position.set(0, -0.117242, 0.950973);
     joints[5].position.set(0, -0.164751, 0.996802);
@@ -86,12 +86,12 @@ void UR5KinematicModel::setup(){
     shader.load("shaders/model");
     
     bDrawModel.set("Draw Model", true);
-    bDrawTargetModel.set("Draw Target Model", false);
+    bDrawTargetModel.set("Draw Target Model", true);
     bUseShader.set("Use Shader", true);
 }
 
 ofQuaternion UR5KinematicModel::getToolPointQuaternion(){
-    return nodes[5].getGlobalTransformMatrix().getRotate();
+    return toOf(nodes[5].getGlobalTransformMatrix()).getRotate();
 }
 
 
@@ -135,6 +135,7 @@ void UR5KinematicModel::update(){
 void UR5KinematicModel::draw(bool bDrawDebug){
     ofPushMatrix();
     ofPushStyle();
+    ofEnableDepthTest();
     ofSetColor(255, 255, 255);
     if(bDrawDebug) {
         ofPushStyle(); {
@@ -214,7 +215,7 @@ void UR5KinematicModel::draw(bool bDrawDebug){
             ofPopMatrix();
         }
     }
-    
+    ofDisableDepthTest();
     ofPopStyle();
     ofPopMatrix();
 }
