@@ -11,7 +11,7 @@
 ##Licensing
 `ofxURDriver` is licensed for **NON-COMMERCIAL USE ONLY**. 
 
-Copyright (c) 2016, Daniel Moore, Madaline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry
+Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -24,7 +24,7 @@ modification, are permitted provided that the following conditions are met:
 3. All advertising materials mentioning features or use of this software
    must display the following acknowledgement:
    This product includes software developed by Daniel Moore, Madaline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry.
-4. Neither the name of Daniel Moore, Madaline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry 
+4. Neither the name of Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry 
    nor the names of its contributors may be used to endorse or promote products
    derived from this software without specific prior written permission.
 5. The terms of this License form a binding agreement between you, an individual user or non-commercial organization ("you" or "your"), and us  
@@ -32,7 +32,7 @@ modification, are permitted provided that the following conditions are met:
 
 **PLEASE NOTE THAT THIS LICENSE IS INTENDED FOR NON-COMMERCIAL USE ONLY. IF YOU INTEND TO USE THIS SOFTWARE FOR A COMMERCIAL PURPOSE, PLEASE CONTACT *dan@makeitdoathing.com* TO ARRANGE A COLLABORATION AGREEMENT WITH US BASED ON OUR COMMERCIAL LICENSE TERMS.**
 
-THIS SOFTWARE IS PROVIDED BY Daniel Moore, Madaline Gannon, 
+THIS SOFTWARE IS PROVIDED BY Daniel Moore, Madeline Gannon, 
 and The Frank-Ratchye STUDIO for Creative Inquiry ''AS IS'' AND ANY
 EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
