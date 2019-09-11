@@ -27,7 +27,19 @@ ofxURDriver::ofxURDriver(){
 }
 
 ofxURDriver::~ofxURDriver(){
-    stopThread();
+    if(robot){
+        delete robot;
+        robot = NULL;
+    }
+}
+
+void ofxURDriver::stopThread(){
+    if(bStarted){
+        disconnect();
+    }
+    if(isThreadRunning()){
+        ofThread::stopThread();
+    }
 }
 
 void ofxURDriver::setAllowReconnect(bool bDoReconnect){
@@ -128,13 +140,7 @@ bool ofxURDriver::isConnected() {
     return false;
 }
 
-void ofxURDriver::stopThread(){
-    
-    if(bStarted){
-        disconnect();
-        ofThread::stopThread();
-    }
-}
+
 
 void ofxURDriver::disconnect(){
     if( robot != NULL ) robot->halt();

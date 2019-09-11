@@ -11,11 +11,7 @@ UR5KinematicModel::UR5KinematicModel(){
     
 }
 UR5KinematicModel::~UR5KinematicModel(){
-    tcpNode.clearParent();
-    
-    for(int i = 1; i <nodes.size(); i++){
-        nodes[i].clearParent();
-    }
+
 }
 
 void UR5KinematicModel::setup(){
