@@ -286,6 +286,13 @@ void UrDriver::setPosition(double q0, double q1, double q2, double q3, double q4
 	rt_interface_->setPosition(q0, q1, q2, q3, q4, q5);
 }
 
+// DAN added
+void UrDriver::setTeachModeDisabled(){
+    rt_interface_->setTeachModeDisabled();
+}
+void UrDriver::setTeachModeEnabled(){
+     rt_interface_->setTeachModeEnabled();
+}
 
 std::vector<std::string> UrDriver::getJointNames() {
     return joint_names_;

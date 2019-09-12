@@ -63,6 +63,9 @@ public:
 			double max_payload = 1., double servoj_lookahead_time=0.03, double servoj_gain=300.);
 	bool start();
 	void halt();
+    
+    void setTeachModeDisabled();
+    void setTeachModeEnabled();
 
 	void setSpeed(double q0, double q1, double q2, double q3, double q4,
 			double q5, double acc = 100.);

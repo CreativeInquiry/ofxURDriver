@@ -22,6 +22,9 @@ public:
     bool isConnected();
     void disconnect();
     void stopThread();
+    void toggleTeachMode();
+    void setTeachMode(bool enabled);
+    bool bTeachModeEnabled;
     void setToolOffset(ofVec3f localPos);
     void threadedFunction();
     ofNode getToolNode();

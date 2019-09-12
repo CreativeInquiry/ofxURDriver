@@ -115,6 +115,18 @@ void UrRealtimeCommunication::setSpeed(double q0, double q1, double q2,
 	}
 }
 
+void UrRealtimeCommunication::setTeachModeEnabled(){
+    char cmd[1024];
+    sprintf(cmd,"def myProg():\n\twhile (True):\n\t\tfreedrive_mode()\n\t\tsync()\n\tend\nend\n");
+    addCommandToQueue((std::string) (cmd));
+}
+
+void UrRealtimeCommunication::setTeachModeDisabled(){
+    char cmd[1024];
+    sprintf(cmd,"end_freedrive_mode()\n");
+    addCommandToQueue((std::string) (cmd));
+}
+
 //see http://www.sysaxes.com/manuels/scriptmanual_en_3.1.pdf
 void UrRealtimeCommunication::setPosition(double q0, double q1, double q2,
 		double q3, double q4, double q5) {
@@ -123,6 +135,7 @@ void UrRealtimeCommunication::setPosition(double q0, double q1, double q2,
     
     //for documentation on this function
     //http://www.sysaxes.com/manuels/scriptmanual_en_3.1.pdf
+    //https://s3-eu-west-1.amazonaws.com/ur-support-site/18679/scriptmanual_en.pdf
     
     //0.08 is the delatime but this needs to be lower than actual
     //0.01 is the lookahead time - lower is more snappy

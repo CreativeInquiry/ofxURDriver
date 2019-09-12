@@ -65,6 +65,8 @@ public:
 			unsigned int safety_count_max = 12);
 	bool start();
 	void halt();
+    void setTeachModeDisabled();
+    void setTeachModeEnabled();
 	void setSpeed(double q0, double q1, double q2, double q3, double q4,
 			double q5, double acc = 100.);
     void setPosition(double q0, double q1, double q2,

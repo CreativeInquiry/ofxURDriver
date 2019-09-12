@@ -28,18 +28,42 @@ ofxURDriver::ofxURDriver(){
 
 ofxURDriver::~ofxURDriver(){
     if(robot){
+        disconnect();
         delete robot;
         robot = NULL;
     }
 }
 
 void ofxURDriver::stopThread(){
-    if(bStarted){
+    if(isConnected()){
         disconnect();
     }
     if(isThreadRunning()){
         ofThread::stopThread();
     }
+}
+void ofxURDriver::toggleTeachMode(){
+    lock();
+    if(bTeachModeEnabled){
+        bTeachModeEnabled = false;
+        robot->setTeachModeDisabled();
+    }else{
+        bTeachModeEnabled = true;
+        robot->setTeachModeEnabled();
+    }
+    unlock();
+}
+
+void ofxURDriver::setTeachMode(bool enabled){
+    lock();
+    if(enabled){
+        bTeachModeEnabled = true;
+        robot->setTeachModeEnabled();
+    }else{
+        bTeachModeEnabled = false;
+        robot->setTeachModeDisabled();
+    }
+    unlock();
 }
 
 void ofxURDriver::setAllowReconnect(bool bDoReconnect){
