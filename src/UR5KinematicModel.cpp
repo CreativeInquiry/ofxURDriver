@@ -128,7 +128,7 @@ void UR5KinematicModel::setToolMesh(ofMesh mesh){
 void UR5KinematicModel::update(){
 
 }
-void UR5KinematicModel::draw(bool bDrawDebug){
+void UR5KinematicModel::draw(ofFloatColor color, bool bDrawDebug){
     ofPushMatrix();
     ofPushStyle();
     ofEnableDepthTest();
@@ -151,7 +151,9 @@ void UR5KinematicModel::draw(bool bDrawDebug){
         gmat.makeScaleMatrix( 1, 1, 1 );
         
         if(bUseShader){
+        
             shader.begin();
+            shader.setUniform4f("color", color);
         }
         ofPushMatrix();
         {
@@ -173,18 +175,19 @@ void UR5KinematicModel::draw(bool bDrawDebug){
                     if(i >= 3){
                         ofPushMatrix();
                         {
-                            ofRotateZ(-180);
-                            ofRotateX(-180);
+                            ofRotateDeg(-180, 0, 0, 1);
+                            ofRotateDeg(-180, 1, 0, 0);
                             ofScale(100, 100, 100);
                             meshs[i].draw();
                         }
                         ofPopMatrix();
                     }
-                    ofRotate(x, axis.x, axis.y, axis.z);
+                    ofRotateDeg(x, axis.x, axis.y, axis.z);
                     if(i < 3){
-                        ofPushMatrix(); {
-                            ofRotateZ(-180);
-                            ofRotateX(-180);
+                        ofPushMatrix();
+                        {
+                            ofRotateDeg(-180, 0, 0, 1);
+                            ofRotateDeg(-180, 1, 0, 0);
                             ofScale(100, 100, 100);
                             
                             meshs[i].draw();

@@ -20,7 +20,7 @@ public:
     ~UR5KinematicModel();
     void setup();
     void update();
-    void draw(bool bDrawDebug=true);
+    void draw(ofFloatColor color = ofFloatColor(1, 1, 1, 1), bool bDrawDebug=true);
     void setToolMesh(ofMesh mesh);
     void setPose(vector<double> pose);
     
