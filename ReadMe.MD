@@ -1,14 +1,14 @@
 
-#ofxURDriver
+# ofxURDriver
 
-######An openFrameworks addon for controlling and interacting with Universal Robots robotic arms.  
+###### An openFrameworks addon for controlling and interacting with Universal Robots robotic arms.  
 
 `ofxURDriver` adapts ThomasTimm's [ur_modern_driver](https://github.com/ThomasTimm/ur_modern_driver) package for ROS to openFrameworks. Please see [ofxRobotArm](https://github.com/CreativeInquiry/ofxRobotArm) for examples on how to use this addon.
 
 ![KinematicModel](data/ezgif.com-video-to-gif%20(1).gif)
 
 
-##Licensing
+## Licensing
 `ofxURDriver` is licensed for **NON-COMMERCIAL USE ONLY**. 
 
 Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry
@@ -45,10 +45,10 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-##Contact Info
+## Contact Info
 **Dan Moore** | [makeitdoathing](http://www.makeitdoathing.com ) | [@danzeeeman](https://github.com/danzeeeman)
 
-**Madeline Gannon** | [MADLAB R&D](http://www.madlab.cc) | [@madelinegannon](https://github.com/madelinegannon)
+**Madeline Gannon** | [A TON A TON](https://atonaton.com) | [@madelinegannon](https://github.com/madelinegannon)
 
 **The Frank-Ratchye STUDIO for Creative Inquiry** | [studioforcreativeinquiry.org](http://studioforcreativeinquiry.org) | [@creativeinquiry](https://github.com/CreativeInquiry)
 
