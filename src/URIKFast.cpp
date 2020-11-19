@@ -1,8 +1,13 @@
 #include "URIKFast.h"
 // Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry All rights reserved.
 //
+URIKFast::URIKFast(RobotType type){
+    kinematics = URKinematics(type);
+}
 URIKFast::URIKFast(){
-    
+    // just pick a default Robot Type to start (FIX LATER)
+    ofLog() << "PICKING RobotType::UR10 as default Kinematic Model" << endl;
+    kinematics = URKinematics(RobotType::UR10);
 }
 URIKFast::~URIKFast(){
     

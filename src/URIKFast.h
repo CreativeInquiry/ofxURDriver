@@ -6,11 +6,13 @@
 //#include "RobotKinematicModel.h"
 #include "URJoint.h"
 #include "ofxIKArm.h"
+#include "URUtils.h"
 // Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry All rights reserved.
 //
 class URIKFast{
 public:
     URIKFast();
+    URIKFast(RobotType type);
     ~URIKFast();
     
     int selectSolution(vector<vector<double> > & inversePosition, vector<double> currentQ, vector<double> weight);

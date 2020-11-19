@@ -38,6 +38,7 @@
 #pragma once
 #include "ofMain.h"
 #include "ikfast.h"
+#include "URUtils.h"
 
 // These kinematics find the tranfrom from the base link to the end effector.
 // Though the raw D-H parameters specify a transform from the 0th link to the 6th link,
@@ -58,6 +59,7 @@
 
 class URKinematics {
 public:
+    URKinematics(RobotType type);
     URKinematics();
     ~URKinematics();
   // @param q       The 6 joint values
@@ -75,5 +77,12 @@ public:
   //                in case of an infinite solution on that joint.
   // @return        Number of solutions found (maximum of 8)
   int inverse(const double* T, double* q_sols, double q6_des=0.0);
+private:
+    double d1;
+    double a2;
+    double a3;
+    double d4;
+    double d5;
+    double d6;
 };
 

@@ -21,7 +21,7 @@ UR10KinematicModel::~UR10KinematicModel(){
 void UR10KinematicModel::setup(){
     
     
-    if(loader.loadModel(ofToDataPath("models/ur5.dae"))){
+    if(loader.loadModel(ofToDataPath("models/ur10.dae"))){
         for(int i = 0; i < loader.getNumMeshes(); i++){
             cout<<i<<endl;
             meshs.push_back(loader.getMesh(i));
@@ -37,13 +37,14 @@ void UR10KinematicModel::setup(){
     vector<Joint> foojoints;
     foojoints.resize(6);
     
+    // resize based on UR10
     joints[0].position.set(0, 0, 0);
     joints[1].position.set(0, -0.072238, 0.083204);
     joints[2].position.set(0,-0.077537,0.51141);
     joints[3].position.set(0, -0.070608, 0.903192);
     joints[4].position.set(0, -0.117242, 0.950973);
     joints[5].position.set(0, -0.164751, 0.996802);
-    tool.position.set(joints[5].position + ofVec3f(0,-0.135,0)); // tool tip position
+    tool.position.set(joints[5].position + ofVec3f(0,0,0)); // tool tip position
     
     for(int i = 1; i <joints.size(); i++){
         joints[i].offset =joints[i].position-joints[i-1].position;

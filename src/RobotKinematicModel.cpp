@@ -43,36 +43,16 @@ void RobotKinematicModel::setup(RobotType type){
     }
     else if (type == RobotType::UR10){
         
-//        for (int i=0; i<6; i++){
-//            if(loader.loadModel(ofToDataPath("models/ur10_joint_"+ofToString(i)+".dae"))){
-//                meshs.push_back(loader.getMesh(i));
-//            }
-//            else{
-//                ofLogFatalError()<<"PLEASE PLACE THE 3D FILES OF THE UR ARM IN data/models/ur10.dae"<<endl;
-//            }
-//        }
-//
-//        cout << "NUMBER OF UR10 MESHES: " << meshs.size() << endl << endl;
-        
         if(loader.loadModel(ofToDataPath("models/ur10.dae"))){
             for(int i = 0; i < loader.getNumMeshes(); i++){
                 meshs.push_back(loader.getMesh(i));
             }
-            // meshes are loading in the proper order, so reorder here
-//            vector<ofMesh> temp_meshes;
-//            temp_meshes.push_back(meshs[0]);
-//            temp_meshes.push_back(meshs[5]);
-//            temp_meshes.push_back(meshs[4]);
-//            temp_meshes.push_back(meshs[1]);
-//            temp_meshes.push_back(meshs[3]);
-//            temp_meshes.push_back(meshs[2]);
-//            meshs.clear();
-//            meshs.insert(meshs.begin(), temp_meshes.begin(), temp_meshes.end());
         }else{
             ofLogFatalError()<<"PLEASE PLACE THE 3D FILES OF THE UR ARM IN data/models/ur10.dae"<<endl;
         }
 
         joints[0].position.set(0, 0, 0);
+        
         // These are correct joint positions for the non-home D-H position.
         // Reference: https://asd.sutd.edu.sg/dfab/a-geometric-inverse-kinematics-solution-for-the-universal-robot/
 //        joints[1].position.set(-.1273,  0, -.086);          //  -1.273,0.000,-0.860
@@ -86,11 +66,11 @@ void RobotKinematicModel::setup(RobotType type){
         joints[2].position.set(0, -.1163, .7393);         //(-.7393,0.000,-.1163);    //
         joints[3].position.set(0, -.1094, 1.3116);          //(-1.3116,0.000,-.1094);   //
         joints[4].position.set(0, -0.16395, 1.3733);       //(-1.3733,0.000,-.1639);   //
-        joints[5].position.set(0, -0.2561, 1.4273);        //(-1.4273,0.000,-.2561);   //
+        joints[5].position.set(0, -0.22535, 1.4273);        //(-1.4273,0.000,-.2561);   //
     }
 
 
-    tool.position.set(joints[5].position + ofVec3f(0,0,0)); // tool tip position
+    tool.position.set(joints[5].position + ofVec3f(0,-0.0308,0)); // tool tip position
     
     for(int i = 1; i <joints.size(); i++){
         joints[i].offset =joints[i].position-joints[i-1].position;
@@ -130,7 +110,7 @@ void RobotKinematicModel::setup(RobotType type){
     
     // Set Tool Center Point Node
     tcpNode.setParent(nodes[5]);
-    tcpNode.setPosition(ofVec3f(0.0, -0.2, 0.0)*1000);
+    tcpNode.setPosition(ofVec3f(0.0, -0.0308, 0.0)*1000);
     
     // Set Tool Rotations
     tool.rotation =joints[5].rotation;
@@ -192,7 +172,7 @@ void RobotKinematicModel::draw(ofFloatColor color, bool bDrawDebug){
         ofPushStyle(); {
             ofDrawAxis(1000);
             ofSetColor(255, 255, 0);
-            ofDrawSphere(tool.position*ofVec3f(1000, 1000, 1000), 4);
+            ofDrawSphere(tool.position*ofVec3f(1000, 1000, 1000), 40);
             ofSetColor(225, 225, 225);
         } ofPopStyle();
     }
@@ -220,7 +200,6 @@ void RobotKinematicModel::draw(ofFloatColor color, bool bDrawDebug){
                     ofVec3f axis;
                     q = joints[i].rotation;
                     q.getRotate(x, axis);
-                    cout << "Joint " << i << " Offset: " << (ofToString(joints[i].offset*1000)) << endl;
                     ofTranslate(joints[i].offset*1000);
                     gmat.translate( joints[i].offset*1000 );
                     
