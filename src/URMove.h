@@ -10,6 +10,7 @@
 #pragma once
 #include "ofMain.h"
 #include "UR5KinematicModel.h"
+#include "UR10KinematicModel.h"
 #include "ofxTiming.h"
 #include "Synchronized.h"
 #include "URIKFast.h"
