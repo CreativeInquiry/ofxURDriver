@@ -6,6 +6,6 @@
 #include "URMove.h"
 #include "URUtils.h"
 #include "RobotKinematicModel.h"
-#include "UR5KinematicModel.h"
-#include "UR10KinematicModel.h"
+//#include "UR5KinematicModel.h"
+//#include "UR10KinematicModel.h"
 
