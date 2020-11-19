@@ -10,6 +10,7 @@
 #include "ofMain.h"
 #include "ur_driver.h"
 #include "UR5KinematicModel.h"
+#include "UR10KinematicModel.h"
 #include "ofxTiming.h"
 
 class ofxURDriver : public ofThread{

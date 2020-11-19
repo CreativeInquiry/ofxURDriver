@@ -4,5 +4,8 @@
 #pragma once
 #include "URDriver.h"
 #include "URMove.h"
+#include "URUtils.h"
+#include "RobotKinematicModel.h"
 #include "UR5KinematicModel.h"
+#include "UR10KinematicModel.h"
 

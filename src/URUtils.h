@@ -24,3 +24,7 @@ ofVec3f toMM(ofVec3f v){
     return ofVec3f(v*ofVec3f(1000, 1000, 1000));
 }
 
+enum RobotType{
+    UR5,
+    UR10
+};

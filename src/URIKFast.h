@@ -1,7 +1,10 @@
 #pragma once
 #include "ofMain.h"
 #include "ur_kin.h"
-#include "UR5KinematicModel.h"
+//#include "UR5KinematicModel.h"
+//#include "UR10KinematicModel.h"
+//#include "RobotKinematicModel.h"
+#include "URJoint.h"
 #include "ofxIKArm.h"
 // Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry All rights reserved.
 //
