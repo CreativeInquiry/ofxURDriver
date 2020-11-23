@@ -9,6 +9,8 @@
 //
 #pragma once
 
+#include "URJoint.h"
+#include "Plane.h"
 
 /// \brief Converts a 3D point from millimeters to meters
 /// \param v ofVec3f to convert
