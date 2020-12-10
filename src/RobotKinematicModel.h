@@ -25,6 +25,9 @@ public:
     void setToolMesh(ofMesh mesh);
     void setPose(vector<double> pose);
     
+    void setEndEffector(string filename);
+    void clearEndEffector();
+    
     void getArmIK( ofVec3f aTargetWorldPos, ofVec3f aElbowWorldPos, bool aBInvertElbow, float aDeltaTimef );
     
     ofNode getTool();
