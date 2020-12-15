@@ -1,13 +1,13 @@
 #include "URIKFast.h"
 // Copyright (c) 2016, Daniel Moore, Madeline Gannon, and The Frank-Ratchye STUDIO for Creative Inquiry All rights reserved.
 //
-URIKFast::URIKFast(RobotType type){
+URIKFast::URIKFast(ofxRobotArm::RobotType type){
     kinematics = URKinematics(type);
 }
 URIKFast::URIKFast(){
     // just pick a default Robot Type to start (FIX LATER)
     ofLog() << "PICKING RobotType::UR10 as default Kinematic Model" << endl;
-    kinematics = URKinematics(RobotType::UR10);
+    kinematics = URKinematics(ofxRobotArm::RobotType::UR10);
 }
 URIKFast::~URIKFast(){
     
@@ -217,7 +217,7 @@ vector<vector<double> > URIKFast::inverseKinematics(vector<double> input)
     return vector<vector<double>>();
 }
 
-vector<vector<double> > URIKFast::inverseKinematics(Joint pose){
+vector<vector<double> > URIKFast::inverseKinematics(ofxRobotArm::Joint pose){
     ofMatrix4x4 matPose;
     ofMatrix4x4 matT, matR;
     matT.makeTranslationMatrix(pose.position);

@@ -224,8 +224,8 @@ float ofxURDriver::getThreadFPS(){
     return fps;
 }
 
-Joint ofxURDriver::getToolPose(){
-    Joint ret;
+ofxRobotArm::Joint ofxURDriver::getToolPose(){
+    ofxRobotArm::Joint ret;
     lock();
     ret = tool;
     unlock();

@@ -46,7 +46,7 @@ public:
     void setSpeed(vector<double> speeds, double acceleration = 100.0);
     void setPosition(vector<double> positions);
     
-    Joint getToolPose();
+    ofxRobotArm::Joint getToolPose();
     // Robot Arm
     UrDriver* robot;
     condition_variable rt_msg_cond_;
@@ -83,9 +83,9 @@ public:
     Synchronized<vector<double> > jointsProcessed;
     Synchronized<vector<double> > jointsRaw;
     Synchronized<vector<double> > toolPointRaw;
-    Joint tool;
-    Joint dtoolPoint;
-    vector<Joint> joints;
+    ofxRobotArm::Joint tool;
+    ofxRobotArm::Joint dtoolPoint;
+    vector<ofxRobotArm::Joint> joints;
     
 
     bool bTriedOnce = false;

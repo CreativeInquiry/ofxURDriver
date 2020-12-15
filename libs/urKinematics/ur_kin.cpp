@@ -38,8 +38,8 @@ int SIGN(double x) {
 //const double d6 =  0.0819;
 //#endif
 
-URKinematics::URKinematics(RobotType type){
-    if (type == RobotType::UR3){
+URKinematics::URKinematics(ofxRobotArm::RobotType type){
+    if (type == ofxRobotArm::RobotType::UR3){
         d1 =  0.1519;
         a2 = -0.24365;
         a3 = -0.21325;
@@ -47,7 +47,7 @@ URKinematics::URKinematics(RobotType type){
         d5 =  0.08535;
         d6 =  0.0819;
     }
-    else if (type == RobotType::UR5){
+    else if (type == ofxRobotArm::RobotType::UR5){
         d1 =  0.089159;
         a2 = -0.42500;
         a3 = -0.39225;
@@ -55,7 +55,7 @@ URKinematics::URKinematics(RobotType type){
         d5 =  0.09465;
         d6 =  0.0823;
     }
-    else if (type == RobotType::UR10){
+    else if (type == ofxRobotArm::RobotType::UR10){
         d1 =  0.1273;
         a2 = -0.612;
         a3 = -0.5723;
