@@ -110,7 +110,7 @@ void ofxURDriver::setup(string ipAddress, double minPayload, double maxPayload){
     toolPointRaw.swapBack();
     bStarted = false;
 
-    
+    // @TODO: This is all incorrect (now called in RobotKinematicModel)
     joints.resize(6);
     
     joints[0].position.set(0, 0, 0);

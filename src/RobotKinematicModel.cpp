@@ -43,6 +43,7 @@ void RobotKinematicModel::setup(RobotType type){
     }
     else if (type == RobotType::UR10){
         
+        // should load model from addon data path, not app
         if(loader.loadModel(ofToDataPath("models/ur10.dae"))){
             for(int i = 0; i < loader.getNumMeshes(); i++){
                 meshs.push_back(loader.getMesh(i));
@@ -70,16 +71,13 @@ void RobotKinematicModel::setup(RobotType type){
     }
 
 
-    tool.position.set(joints[5].position + ofVec3f(0,-0.0308,0)); // tool tip position
+    tool.position.set(joints[5].position + ofVec3f(0,-0.0308,0)); // flange position
     
     for(int i = 1; i <joints.size(); i++){
         joints[i].offset =joints[i].position-joints[i-1].position;
         
     }
     tool.offset = joints[5].offset;
-    
-    cout << "\tJOINTS COUNT: " << joints.size() << endl;
-    
     
     // Setup the joint axes
     joints[0].axis.set(0, 0, 1);
@@ -157,6 +155,24 @@ void RobotKinematicModel::setPose(vector<double> pose){
     }
     
 }
+
+void RobotKinematicModel::setEndEffector(string filename){
+    string path = ofToDataPath("models/"+filename);
+   
+    loader.clear();
+    if (loader.loadModel("models/"+filename))
+    {
+        toolMesh = loader.getMesh(0);
+    }
+    else{
+        ofLogFatalError()<<"PLEASE PLACE THE 3D FILES OF THE END EFFECTOR IN data/models/" << filename <<endl;
+    }
+}
+
+void RobotKinematicModel::clearEndEffector(){
+    toolMesh.clear();
+}
+
 void RobotKinematicModel::setToolMesh(ofMesh mesh){
     toolMesh = mesh;
 }
@@ -228,8 +244,18 @@ void RobotKinematicModel::draw(ofFloatColor color, bool bDrawDebug){
                             meshs[i].draw();
                         } ofPopMatrix();
                     }
+                    if (i==5){
+                        // include flange offset
+                        ofTranslate(0, -0.0308 * 1000, 0);
+                        // the x-axis was rotating backwards,
+                        // so I'm doing some funny business here
+                        ofRotateDeg(180, 0, 0, 1);
+                        ofRotateDeg(-180, nodes[5].getXAxis().x,
+                                    nodes[5].getXAxis().y,
+                                    nodes[5].getXAxis().z);
+                        toolMesh.drawWireframe();
+                    }
                 }
-                toolMesh.draw();
             }
             ofPopMatrix();
         }
