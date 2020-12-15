@@ -13,7 +13,7 @@
 //#include "UR10KinematicModel.h"
 #include "ofxTiming.h"
 #include "Synchronized.h"
-#include "URIKFast.h"
+#include "InverseKinemactic.h"
 class URMove {
 public:
     URMove();
