@@ -162,7 +162,8 @@ void RobotKinematicModel::setEndEffector(string filename){
     loader.clear();
     if (loader.loadModel("models/"+filename))
     {
-        toolMesh = loader.getMesh(0);
+        for (int i=0; i<loader.getNumMeshes(); i++)
+            toolMesh.append(loader.getMesh(i));
     }
     else{
         ofLogFatalError()<<"PLEASE PLACE THE 3D FILES OF THE END EFFECTOR IN data/models/" << filename <<endl;
