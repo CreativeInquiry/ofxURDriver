@@ -33,7 +33,7 @@ UrRealtimeCommunication::UrRealtimeCommunication(
 	}
 	serv_addr_.sin_family = AF_INET;
 	bcopy((char *) server_->h_addr, (char *)&serv_addr_.sin_addr.s_addr, server_->h_length);
-	serv_addr_.sin_port = htons(30003);
+    serv_addr_.sin_port = htons(30003);
 	flag_ = 1;
 	setsockopt(sockfd_, IPPROTO_TCP, TCP_NODELAY, (char *) &flag_, sizeof(int));
 	setsockopt(sockfd_, IPPROTO_TCP, TCP_NODELAY, (char *) &flag_, sizeof(int));

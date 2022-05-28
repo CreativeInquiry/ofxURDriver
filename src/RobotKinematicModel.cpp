@@ -118,6 +118,8 @@ void RobotKinematicModel::setup(RobotType type){
     bDrawModel.set("Draw Model", true);
     bDrawTargetModel.set("Draw Target Model", true);
     bUseShader.set("Use Shader", true);
+    
+    isSetup = true;
 }
 
 ofQuaternion RobotKinematicModel::getToolPointQuaternion(){
@@ -153,7 +155,6 @@ void RobotKinematicModel::setPose(vector<double> pose){
         }
          nodes[i].setOrientation(joints[i].rotation);
     }
-    
 }
 
 void RobotKinematicModel::setEndEffector(string filename){

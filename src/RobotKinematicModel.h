@@ -58,6 +58,7 @@ public:
     ofParameter<bool> bDrawTargetModel;
     ofParameter<bool> bUseShader;
     
+    bool isSetup = false;
     
 //    ofxBulletWorldRigid			world;
 //    vector <ofxBulletBox*>		bounds;

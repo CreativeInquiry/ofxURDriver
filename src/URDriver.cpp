@@ -415,6 +415,7 @@ void ofxURDriver::threadedFunction(){
             
             if(bMoveWithPos){
                 //if we aren't moving but deccelCount isn't 0 lets deccelerate 
+//                cout << "ofxDriver::bMove: " << bMove << endl;
                 if( (bMove && currentPosition.size()>0)|| (currentPosition.size()>0 && deccelCount>0) ){
                     timeNow = ofGetElapsedTimef();
                     if( bMove || timeNow-lastTimeSentMove >= 1.0/60.0){
